@@ -20,11 +20,12 @@ write_files:
           <p><img src='http://storage.yandexcloud.net/grpa-storage/Game.png'/></p>
         </body>
       </html>
-    path: /var/www/html/index.html
+    path: /var/www/html/template.tl
 package_update: true
 package_upgrade: false
 packages: 
   - nano
   - curl
 runcmd:
-  - sed "s/#ipaddress/$(curl ifconfig.me)/g" /var/www/html/index.html
+  - sed "s/#ipaddress/$(curl ifconfig.me)/g" /var/www/html/template.tl>/var/www/html/index.html
+  - rm /var/www/html/template.tl
